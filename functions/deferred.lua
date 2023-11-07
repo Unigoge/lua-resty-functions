@@ -189,6 +189,8 @@ function _deferred.run_executor( self, queue_name )
                     end );
 
                     ngx.sleep(0.001); -- yield
+                else
+                    self.tasks_sema:post(1);
                 end
             end
     end ); -- end of thread code
